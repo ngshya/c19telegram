@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 telegram-send.conf.backup
+telegram-send.conf
 *.png
