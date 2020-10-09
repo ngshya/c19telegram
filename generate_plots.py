@@ -5,7 +5,7 @@ df_data = read_csv(
     filepath_or_buffer="https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv", 
     parse_dates=["data"]
 )
-df_data.sort_values(["data"], inplace=True)
+df_data.sort_values(["data"], inplace=True).reset_index(drop=True)
 
 df_data["nuovi_tamponi"] = df_data["tamponi"].diff()
 df_data["positivi_su_tamponi"] = df_data["nuovi_positivi"] / df_data["nuovi_tamponi"]
@@ -49,7 +49,7 @@ df_data = read_csv(
     usecols=["data", "denominazione_regione", "totale_ospedalizzati", "nuovi_positivi", "deceduti", "tamponi"]
 )
 df_data = df_data.loc[df_data.denominazione_regione == "Piemonte", :]
-df_data.sort_values(["data"], inplace=True)
+df_data.sort_values(["data"], inplace=True).reset_index(drop=True)
 
 df_data["nuovi_tamponi"] = df_data["tamponi"].diff()
 df_data["positivi_su_tamponi"] = df_data["nuovi_positivi"] / df_data["nuovi_tamponi"]
@@ -81,7 +81,7 @@ df_data = read_csv(
     usecols = ["data", "sigla_provincia", "totale_casi"]
 )
 df_data = df_data.loc[df_data.sigla_provincia == "TO", :]
-df_data.sort_values(["data"], inplace=True)
+df_data.sort_values(["data"], inplace=True).reset_index(drop=True)
 df_data["nuovi_positivi"] = df_data["totale_casi"].diff()
 
 fig, ax = plt.subplots(figsize=(14, 7))
